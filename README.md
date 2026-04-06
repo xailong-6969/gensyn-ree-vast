@@ -117,6 +117,51 @@ docker pull xailong6969/gensyn-ree-cloud:latest
 
 ---
 
+## Local PC Usage
+
+You can also run this image locally on a machine with Docker and an NVIDIA GPU.
+
+### 1. Pull the image
+
+```bash
+docker pull xailong6969/gensyn-ree-cloud:latest
+```
+
+### 2. Start a shell inside the container
+
+```bash
+docker run --rm -it --gpus all -e REE_DIRECT_MODE=1 --workdir /opt/ree-cloud --entrypoint /bin/bash xailong6969/gensyn-ree-cloud:latest
+```
+
+### 3. Run REE inside the container
+
+```bash
+python3 ree.py
+```
+
+### Exit the container
+
+When you are done, leave the container with:
+
+```bash
+exit
+```
+
+### Re-run later
+
+If you want to use it again later:
+
+1. Open your normal host terminal
+2. Run the same `docker run ...` command again
+3. Inside the container, run `python3 ree.py`
+
+Important:
+
+- Do not run `docker run ...` from inside the container shell
+- If your prompt looks like `root@<container-id>:/#`, you are already inside the container
+
+---
+
 ## License
 
 [MIT](LICENSE)
